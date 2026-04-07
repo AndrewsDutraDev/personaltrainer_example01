@@ -14,6 +14,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.nav');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    });
+
     // Add fade-in class to all major sections
     const sectionsToAnimate = [
         '.system-box', 
